@@ -46,9 +46,9 @@ export default new Vuex.Store({
 
                 const res = await axios.get(url, {});
                 if(res){
-                    const { results } = res.data;
-                    console.log('getTeamSeason', results)
-                    commit(types.TEAMS_SEASON, results)
+                    const { data } = res.data;
+                    console.log('getTeamSeason', data)
+                    commit(types.TEAMS_SEASON, data)
                 }
 
             } catch (e) {
