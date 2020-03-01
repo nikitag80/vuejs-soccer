@@ -12,8 +12,8 @@
 
         <div class="md-toolbar-row">
           <md-tabs md-sync-route class="md-primary">
-            <md-tab id="tab-one" to="/" md-label="Old project" exact></md-tab>
-            <md-tab id="tab-season" to="/season" md-label="Season teams"></md-tab>
+            <md-tab id="tab-season" to="/" md-label="Season teams"></md-tab>
+            <md-tab id="tab-search" to="/search" md-label="Search team"></md-tab>
             <!--<md-tab id="tab-team-season" to="/team-season" md-label="TeamSeason"></md-tab>-->
           </md-tabs>
         </div>

@@ -1,28 +1,29 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import One from '../dashboards/one.vue'
-import SeasonStanding from '../dashboards/season-standing.vue'
+//import SeasonStanding from '../dashboards/season-standing.vue'
 import TeamSeason from '../dashboards/season.vue'
+import TeamSearch from '../dashboards/search.vue'
 
 Vue.use(VueRouter)
 
 
 const routes = [
-  {
-    path: '/',
-    name: 'one',
-    component: One
-  },/*
+/*
   {
     path: '/season',
     name: 'season',
     component: SeasonStanding
   },*/
   {
-    path: '/season',
+    path: '/',
     name: 'season',
     component: TeamSeason
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: TeamSearch
   }
 ]
 

@@ -11,37 +11,17 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        users: [],
-        standing: [],
-        seasonId: "16222",
-        teams: []
+        seasonId: API_URLS.DEFAULT_SEASON_ID,
+        teams: [],
+        search_teams: [],
+        standing: []
     },
     actions: {
-        async getUsers({commit}, params) {
-            console.log('params', params)
-            try {
-                const res = await axios.get(API_URLS.RANDOM_USERS, {
-                    params: {
-                        gender: params.gender,
-                        results: params.searchParams
-                    }
-                });
-
-                if(res){
-                    const { results } = res.data;
-                    // console.log('results', results)
-                    commit(types.GET_USER, results);
-                }
-            } catch (e) {
-                console.log(e)
-            }
-
-        },
         async getTeamSeason({commit}, params) {
             console.log('start load getTeamSeason')
             try {
 
-                const url = sportmonks._composeUrl('v2.0/teams/season/{id}', { id: "16222" })
+                const url = sportmonks._composeUrl('v2.0/teams/season/{id}', { id: this.state.seasonId })
                 console.log(url)
 
                 const res = await axios.get(url, {});
@@ -49,6 +29,25 @@ export default new Vuex.Store({
                     const { data } = res.data;
                     console.log('getTeamSeason', data)
                     commit(types.TEAMS_SEASON, data)
+                }
+
+            } catch (e) {
+                console.log(e)
+            }
+
+        },
+        async searchTeam({commit}, text) {
+            console.log('search team')
+            try {
+                console.log('search word ' + text)
+                const url = sportmonks._composeUrl('v2.0/teams/search/{text}', { text: text })
+                console.log(url)
+
+                const res = await axios.get(url, {});
+                if(res){
+                    const { data } = res.data;
+                    console.log('searchTeam result', data)
+                    commit(types.SEARCH_TEAM, data)
                 }
 
             } catch (e) {
@@ -64,6 +63,9 @@ export default new Vuex.Store({
         [types.TEAMS_SEASON](state, results) {
             state.teams = results;
         },
+        [types.SEARCH_TEAM](state, results) {
+            state.search_teams = results;
+        },
         [types.SEASON_STANDING](state, results) {
             state.standing = results;
         },
@@ -74,6 +76,7 @@ export default new Vuex.Store({
     getters: {
         getUsers: (state) => state.users,
         getTeamSeason: (state) => state.teams,
+        searchTeam: (state) => state.search_teams,
         getSeasonStanding: (state) => state.standing,
         getSeasonId: (state) => state.seasonId
     }

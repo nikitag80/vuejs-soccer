@@ -1,18 +1,22 @@
 <template>
-    <team-season/>
+    <team-search/>
 </template>
 
 <script>
-    import TeamSeason from "../components/teams-season.vue";
+    import TeamSearch from "../components/team-search.vue";
 
     export default {
+        name: 'rick',
         components: {
-            TeamSeason
+            TeamSearch
         },
         data() {
             return {
+                text: 'Идет загрузка...',
                 items: [],
+
             }
         }
+
     }
 </script>
