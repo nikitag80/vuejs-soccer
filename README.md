@@ -8,6 +8,13 @@ Vuejs soccer project
 https://www.sportmonks.com/docs/football/2.0/teams/a/get-teams-played-in-season/23
 
 ```
+Project setup
+```
+npm i
+```
+
+
+```
 Смотрим результат:
 ```
 http://localhost:3001
