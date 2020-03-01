@@ -73,7 +73,7 @@ export default new Vuex.Store({
     },
     getters: {
         getUsers: (state) => state.users,
-        getTeamsSeason: (state) => state.teams,
+        getTeamSeason: (state) => state.teams,
         getSeasonStanding: (state) => state.standing,
         getSeasonId: (state) => state.seasonId
     }
