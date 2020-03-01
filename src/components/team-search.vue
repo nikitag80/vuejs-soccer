@@ -6,6 +6,7 @@
                 <md-input v-model="text"
                           v-validate="{ required: true, min: 6 }"
                           type="text"
+                          v-on:keyup.enter="searchTeam"
                           :class="{ 'is-invalid': submitted && errors.has('text') }"></md-input>
                 <div v-if="submitted && errors.has('text')" class="invalid-feedback">{{ errors.first('text') }}</div>
             </md-field>
@@ -30,7 +31,6 @@
         data() {
             return {
                 text: ''
-
             };
         },
         computed: {
@@ -38,14 +38,7 @@
                 return this.$store.getters.searchTeam
             }
         },
-        // created: async function () {
-            // const { text } = this
-            // await this.$store.dispatch('searchTeam', text)
-        // },
         methods: {
-            // setSearchVal: function(event) {
-            //     this.searchParams = event.target.value;
-            // },
             searchTeam: async function() {
                 const { text } = this
                 await this.$store.dispatch('searchTeam', text)
