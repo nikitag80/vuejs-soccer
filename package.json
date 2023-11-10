@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/nikitag80/vuejs-soccer#readme",
   "dependencies": {
-    "axios": "0.19.2",
+    "axios": "1.6.0",
     "sportmonks": "^1.2.0",
     "vue": "2.6.11",
     "vue-material": "1.0.0-beta-11",
